@@ -1,0 +1,41 @@
+
+<div class="card-container">
+    <div class="card">
+      <!-- <h5 class="card-header">{{item?.name}}</h5> -->
+      <!-- <img src="{{item.url}}" class="card-img-top" alt="Card Image"> -->
+      <div class="stepper-container">
+        <!-- <button mat-icon-button class="stepper-arrow" >
+          <mat-icon>chevron_left</mat-icon>
+        </button> -->
+        <div class="stepper-content">
+          <div class="step-content">
+            <!-- <ng-container *ngFor="let image of item.images; let i = index">
+              <div *ngIf="i ===item.currentIndex">
+                <img [src]="image" alt="Image" class="stepper-image">
+              </div>
+            </ng-container> -->
+            <ng-container>
+            <img [src]="item?.images[index]" alt="Image" class="stepper-image">
+            </ng-container>
+          </div>
+        </div>
+        <!-- <button mat-icon-button class="stepper-arrow">
+          <mat-icon>chevron_right</mat-icon>
+        </button> -->
+      </div>
+      <div class="card-body">
+        <p><strong>Name : </strong> {{item?.name}}</p>
+        <p><strong>Price : </strong> {{item?.price}}</p>
+        <p><strong>Ram : </strong> {{item?.ram}}</p>
+        <p><strong>Storage : </strong> {{item?.storage}}</p>
+        <p><strong>Tax : </strong>{{item?.price*(0.18)}}</p>
+        <p><strong>Total :</strong>{{item?.price*1 + item?.price*(0.18)}}</p>
+
+        <p *ngIf="paymentdone" style="color: green;">Payment successfully completed</p>
+        <button mat-raised-button color="primary" [disabled]="paymentdone" (click)="onPayNowClicked(item.price*1 + item.price*(0.18))">Pay now</button>
+        <!-- <a href="#" class="btn btn-primary" (click)="buy(item.id)">Buy now</a> -->
+        <!-- <a class="btn btn-primary" (click)="buy(item.id)" routerLink="/bill" routerLinkActive="active">Buy now</a> -->
+        <button mat-raised-button style="margin: 20px;" color="warn" [disabled]="!paymentdone" (click)="generateBillPDF()">Get bill</button>
+      </div>
+    </div>
+  </div>

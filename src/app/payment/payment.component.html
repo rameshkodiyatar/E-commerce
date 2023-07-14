@@ -1,0 +1,47 @@
+
+<div class="popup-container">
+  
+    <div class="popup">
+      <div class="header">
+        <h2>Pyment</h2>
+        
+      </div>
+      <form (ngSubmit)="onPaymentSubmit(paymentForm)" #paymentForm="ngForm">
+        <mat-form-field>
+          <input matInput placeholder="Card Number" name="cardNumber" [(ngModel)]="cardNumber" type="number" required>
+          <mat-error *ngIf="paymentForm.controls['cardNumber'].invalid && (paymentForm.controls['cardNumber'].dirty || paymentForm.controls['cardNumber'].touched)">
+            Card Number is required
+          </mat-error>
+        </mat-form-field>
+       
+  
+        <mat-form-field>
+          <input matInput placeholder="CVV" name="cvv" [(ngModel)]="cvv" required type="number">
+          <mat-error *ngIf="paymentForm.controls['cvv'].invalid && (paymentForm.controls['cvv'].dirty || paymentForm.controls['cvv'].touched)">
+            CVV Number is required
+          </mat-error>
+        </mat-form-field>
+  
+        <!-- <mat-form-field>
+          <input matInput placeholder="Expiration Date" name="expiration" [(ngModel)]="expiration" type="date" required>
+        </mat-form-field> -->
+
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Expiration Date" [(ngModel)]="expiration" name="expiration" required>
+            <mat-error *ngIf="paymentForm.controls['expiration'].invalid && (paymentForm.controls['expiration'].dirty || paymentForm.controls['expiration'].touched)">
+              Expiration Date is required
+            </mat-error>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+          
+
+        <mat-form-field>
+            <input matInput placeholder="Amount" name="amount" [(ngModel)]="amount" type="number" required readonly>
+        </mat-form-field>
+  
+        <button mat-raised-button color="primary" type="submit">Pay Now</button>
+      </form>
+    </div>
+  </div>
+  

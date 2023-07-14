@@ -1,0 +1,179 @@
+
+<!-- <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div> -->
+  <!-- <mat-card>
+    <mat-card-header>
+      <mat-card-title>Card Title</mat-card-title>
+      <mat-card-subtitle>Card Subtitle</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      This is the content of the card.
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>Button 1</button>
+      <button mat-button>Button 2</button>
+    </mat-card-actions>
+  </mat-card> -->
+  
+
+  <!-- <mat-card>
+    <mat-card-header>
+      <div mat-card-avatar>
+        <img src="path/to/product-image.jpg" alt="Product Image">
+      </div>
+      <mat-card-title>Product Name</mat-card-title>
+      <mat-card-subtitle>Product Category</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Product Description</p>
+      <p>Price: $XX.XX</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="primary">Add to Cart</button>
+      <button mat-button color="accent">View Details</button>
+    </mat-card-actions>
+  </mat-card> -->
+  <!-- <span *ngFor="let item of data">
+  <div class="card" style="width: 300px; height: 500px;" >
+  <h5 class="card-header">{{item.name}}</h5>
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+  </span> -->
+
+  <!-- <span *ngFor="let item of data" style="display: inline-block; margin: 10px;">
+    <div class="card" style="width: 300px; height: 500px;">
+      <h5 class="card-header">{{item.name}}</h5>
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </span> -->
+  <!-- <span *ngFor="let item of data" style="display: inline-block; margin: 10px;">
+    <div class="card" style="width: 30%; height: 50%;">
+      <h5 class="card-header">{{item.name}}</h5>
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </span> -->
+  <button *ngIf="service.isaddmin" class="btn btn-primary" style="margin: 20px;" (click)="fun()">Add Product</button>
+  <div class="card-container" style="margin-top: 10px;">
+    <div *ngFor="let item of data; let j = index" class="card">
+      <h5 class="card-header">{{item?.name}}</h5>
+      <!-- <img src="{{item.url}}" class="card-img-top" alt="Card Image"> -->
+      <div class="stepper-container">
+        <button mat-icon-button class="stepper-arrow" (click)="previousStep(j)">
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        <div class="stepper-content">
+          <div class="step-content">
+            <ng-container *ngFor="let image of item.images; let i = index">
+              <div *ngIf="i ===item.currentIndex">
+                <img [src]="image" alt="Image" class="stepper-image">
+                
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <button mat-icon-button class="stepper-arrow" (click)="nextStep(j)">
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </div>
+      <div class="card-body">
+        <p><strong>Price : </strong> {{item?.price}}</p>
+        <p><strong>Ram : </strong> {{item?.ram}}</p>
+        <p><strong>Storage : </strong> {{item?.storage}}</p>
+        
+        <!-- <a href="#" class="btn btn-primary" (click)="buy(item.id)">Buy now</a> -->
+        <div class="example-button-row">
+        <a class="btn btn-primary" (click)="buy(item.id,item.currentIndex)" routerLink="/bill" routerLinkActive="active">Buy now</a>
+        <button *ngIf="service.isaddmin" mat-button style="margin: 8px;" color="accent" (click)="onDeleteClicked(item.id)">Delete</button>
+        <button *ngIf="service.isaddmin" mat-button style="margin: 8px;" color="warn" (click)="editData(item.id)">Edit</button>
+      </div>
+      </div>
+    </div>
+  </div>
+  <!-- <app-popup *ngIf="show"></app-popup> -->
+  <!-- <img [src]="imageUrl" alt="Selected Image"> -->
+  <!-- <mat-horizontal-stepper>
+    <mat-step *ngFor="let image of images">
+      <ng-template matStepLabel>
+        <img [src]="image" alt="Image">
+      </ng-template>
+      <img [src]="image" alt="Image" class="stepper-image">
+    </mat-step>
+  </mat-horizontal-stepper> -->
+
+  <!-- <div class="stepper-container">
+    <button mat-icon-button class="stepper-arrow" (click)="previousStep()">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <mat-horizontal-stepper #stepper>
+      <mat-step *ngFor="let image of images">
+        
+        <div >
+          <img [src]="image" alt="Image">
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+    <button mat-icon-button class="stepper-arrow" (click)="nextStep()">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div> -->
+  
+  <!-- <div class="stepper-container">
+    <button mat-icon-button class="stepper-arrow" (click)="previousStep()">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <div class="stepper-content">
+      <div class="step-content">
+        <ng-container *ngFor="let image of images; let i = index">
+          <div *ngIf="i === currentIndex">
+            <img [src]="image" alt="Image" class="stepper-image">
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <button mat-icon-button class="stepper-arrow" (click)="nextStep()">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div> -->
+  
+  
+  <!-- <div>
+    <h3>{{ product.name }}</h3>
+    <p>Price: {{ product.price }}</p>
+    <p>Quantity: {{ product.quantity }}</p>
+  
+    <button (click)="generateBill()">Generate Bill</button>
+  
+    <div *ngIf="billGenerated">
+      <h4>Bill Details</h4>
+      <p>Product: {{ product.name }}</p>
+      <p>Price per unit: {{ product.price }}</p>
+      <p>Quantity: {{ product.quantity }}</p>
+      <p>Total Amount: {{ billAmount }}</p>
+    </div>
+  </div>
+  
+  
+
+  <mat-card>
+    <mat-card-content>Simple card</mat-card-content>
+  </mat-card> -->
+  
+  

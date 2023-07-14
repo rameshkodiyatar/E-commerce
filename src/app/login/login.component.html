@@ -1,0 +1,27 @@
+<div class="login-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form #loginForm="ngForm" (ngSubmit)="login()">
+          <mat-form-field>
+            <input matInput  placeholder="Username" [(ngModel)]="username" name="username" required>
+            <mat-error *ngIf="loginForm.controls['username'].invalid && loginForm.controls['username'].touched">
+                Username is required
+              </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field>
+            <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+            <mat-error *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+                Password is required
+              </mat-error>
+          </mat-form-field>
+          <br>
+          <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
